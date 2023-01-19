@@ -24,6 +24,7 @@ namespace Projekt1.CONTROLLER.Shapes
             {
                 try
                 {
+                   
                     Console.Clear();
                     Console.WriteLine(" SHAPE MENU ");
 
