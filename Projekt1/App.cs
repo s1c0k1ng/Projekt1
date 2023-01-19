@@ -23,6 +23,7 @@ namespace Projekt1
             {
                 try
                 {
+                    
                     var selectionOf = Menu.MainMenu();
 
                     switch (selectionOf)
