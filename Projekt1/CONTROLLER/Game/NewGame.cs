@@ -29,7 +29,7 @@ namespace Projekt1.CONTROLLER.Game
                 int currScore = 0;
                 double winsCount = 0;
                 double GameYouPlay = 0;
-                double avaregeScore = GameYouPlay / winsCount;
+               
 
             while (newGame)
             {
@@ -46,6 +46,9 @@ namespace Projekt1.CONTROLLER.Game
                     Random randomNumb = new Random();
                     var cpuChoice = randomNumb.Next(1, 4);
                    
+                    //double winsCount = DbContext.Games.Where(g => g.Wins == 0 && g.GamesPlayed == 0).Count();
+                     //double avaregeScore = winsCount / GameYouPlay;
+
                     switch (cpuChoice)
                     {
                         case 1:
@@ -100,8 +103,7 @@ namespace Projekt1.CONTROLLER.Game
                                     Date = dateNow,
                                     Score = currScore,
                                     Wins = winsCount,
-                                    GamesPlayed = GameYouPlay
-
+                                    GamesPlayed = GameYouPlay,
                                 });
                                 DbContext.SaveChanges();
 
@@ -140,8 +142,7 @@ namespace Projekt1.CONTROLLER.Game
                                 {
                                     Date = dateNow,
                                     Score = currScore,
-                                    GamesPlayed= GameYouPlay
-
+                                    
                                 });
                                 DbContext.SaveChanges();
 
@@ -162,8 +163,8 @@ namespace Projekt1.CONTROLLER.Game
                                     Date = dateNow,
                                     Score = currScore,
                                     Wins = winsCount,
-                                    GamesPlayed = GameYouPlay
-
+                                    GamesPlayed = GameYouPlay,
+                                    
                                 });
                                 DbContext.SaveChanges();
 
@@ -223,15 +224,27 @@ namespace Projekt1.CONTROLLER.Game
                                     Date = dateNow,
                                     Score = currScore,
                                     Wins = winsCount,
-                                    GamesPlayed = GameYouPlay
-
+                                    GamesPlayed = GameYouPlay,
+                                   
                                 });
                                 DbContext.SaveChanges();
 
                                 Console.ReadLine();
                                 Console.Clear();
                             }
+                           
+                            //DbContext.Games.Add(new DATA.Game
+                            //{
+                            //    Date = dateNow,
+                            //    AvarageScore = Math.Round(avaregeScore, 2)
+
+                            //});
+                            //DbContext.SaveChanges();
+
                             break;
+
+
+                            
 
                     }
                     
@@ -246,16 +259,10 @@ namespace Projekt1.CONTROLLER.Game
 
                         case "n":
                             newGame = false;
-                           
+
                             Console.WriteLine($"\nYour score!: {currScore}");
                             Console.ReadLine();
-
-                            DbContext.Games.Add(new DATA.Game
-                            {
-                                Date = dateNow,
-                                AvarageScore = avaregeScore
-                            });
-                            DbContext.SaveChanges();
+                            
                             break;
                     }
                 }
