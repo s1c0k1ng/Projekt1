@@ -21,7 +21,7 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
             {
                 Console.Clear();
 
-                var dateNow = DateTime.Today;
+                var dateNow = DateTime.UtcNow;
                 double length, width, area, perimeter;
 
                 Console.WriteLine("\tRECTANGLE");
@@ -38,15 +38,16 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 
                 perimeter = 2 * (length * width);
                 Console.WriteLine($"\nPerimeter: {Math.Round(perimeter, 2)} cm");
-                Console.WriteLine($"(\n{dateNow}");
+                Console.WriteLine($"\n{dateNow}");
 
                 dbContext.Shapes.Add(new Shape
                 {
-
+                    input1 = length,
+                    input2 = width,
                     Date = dateNow,
                     Type = shapeName,
-                    Area = area,
-                    Perimeter = perimeter
+                    Area = Math.Round(area, 2),
+                    Perimeter = Math.Round(perimeter, 2)
 
                 });
 

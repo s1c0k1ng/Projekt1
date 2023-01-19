@@ -21,10 +21,13 @@ namespace Projekt1.CONTROLLER.Calculator
             var newBuilder = new Builder();
             var DbContext = newBuilder.Build();
 
-            try
-            {
-                while (true)
+            
+           while (true)
+           {
+                try
                 {
+
+
                     Console.Clear();
                    
                     Console.WriteLine("\tCALCULATOR MENU ");
@@ -35,6 +38,10 @@ namespace Projekt1.CONTROLLER.Calculator
                     Console.WriteLine("\n0. Exit");
 
                     var selectionOf = Convert.ToInt32(Console.ReadLine());
+                    if (selectionOf < 1 || selectionOf > 4)
+                    {
+                        break;
+                    }
 
                     switch (selectionOf)
                     {
@@ -54,18 +61,18 @@ namespace Projekt1.CONTROLLER.Calculator
                             var selectionDR = new DeleteResult(DbContext);
                             selectionDR.Run();
                             break;
-                        
-                        default: break;
-                               
+                             
                     }
-                    break;
+                    
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("INVALID INPUT");
+                    Console.ReadLine();
+                    continue;
                 }
             }
-            catch (Exception)
-            {
-                Console.WriteLine("INVALID INPUT GOING BACK TO MAIN MENU");
-                Console.ReadLine();
-            }
+           
         }
     }
 }

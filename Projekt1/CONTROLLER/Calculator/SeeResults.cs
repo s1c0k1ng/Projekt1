@@ -21,14 +21,15 @@ namespace Projekt1.CONTROLLER.Calculator
 
             Console.WriteLine("\tALL RESULTS ");
 
-            foreach (var answers in DbContext.Calculators)
-            {
-
-                Console.WriteLine($"ID: {answers.CalculatorID}");
-                Console.WriteLine($"Method: {answers.CalculationMethod}");
-                Console.WriteLine($"Results: {answers.Sum}");
-
-            }
+            
+                foreach (var result in DbContext.Calculators)
+                {
+                    Console.WriteLine($"\nID: {result.CalculatorID}");
+                    Console.WriteLine($"Method: {result.CalculationMethod}");
+                    Console.WriteLine($"Results: {result.Sum}");
+                    Console.WriteLine($"Result (Square of nr.2): {result.Sum2}");
+                }
+            
 
             Console.WriteLine("\n Press to Exit");
             Console.ReadLine();

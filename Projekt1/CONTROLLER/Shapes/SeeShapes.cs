@@ -19,15 +19,14 @@ namespace Projekt1.CONTROLLER.Shapes
         {
             Console.Clear();
 
-            Console.WriteLine("\tALL SHAPES ");
+            Console.WriteLine("\tALL SHAPES AND CALCULATIONS ");
 
             foreach (var shapes in DbContext.Shapes)
             {
                 Console.WriteLine($"\nID: {shapes.ShapeID}");
                 Console.WriteLine($"Shape: {shapes.Type}");
-                Console.WriteLine($"Area: {shapes.Area} cm");
-                Console.WriteLine($"Perimter: {shapes.Perimeter} cm");
-                
+                Console.WriteLine($"Area: {shapes.Area}cm");
+                Console.WriteLine($"Perimeter {shapes.Perimeter}cm");
             }
 
             Console.WriteLine("\n Press to Exit");

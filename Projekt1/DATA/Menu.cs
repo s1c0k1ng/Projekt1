@@ -19,10 +19,13 @@ namespace Projekt1.CONTROLLER
         public static int MainMenu()
       
         {
+
             Console.Clear();
 
             Console.WriteLine("\n1. Shapes");
             Console.WriteLine("2. Calculator");
+            Console.WriteLine("3. Rock, Paper, Scissors Game");
+            
 
             var selectionOf = Convert.ToInt32(Console.ReadLine());
 

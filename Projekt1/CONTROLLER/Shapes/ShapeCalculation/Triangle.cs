@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 {
-    internal class Triangle : Interfacial
+    public class Triangle : Interfacial
     {
         public ApplicationDbContext dbContext { get; set; }
         public Triangle(ApplicationDbContext db)
@@ -22,7 +22,7 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 
                 Console.Clear();
 
-                var dateNow = DateTime.Today;
+                var dateNow = DateTime.UtcNow;
                 double hight, side1, side2, side3, width, area, perimeter;
 
                 Console.WriteLine("\tTRIANGLE");
@@ -46,16 +46,19 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 
                 perimeter = side1 + side2 + side3;
                 Console.WriteLine($"\nPerimeter: {Math.Round(perimeter, 2)} cm");
-                Console.WriteLine($"(\n{dateNow}");
+                Console.WriteLine($"\n{dateNow}");
 
                 dbContext.Shapes.Add(new Shape
                 {
-
+                    input1 = side1,
+                    input2 = side2,
+                    input3 = side3,
+                    input4 = width,
+                    input5 = hight,
                     Date = dateNow,
                     Type = shapeName,
-                    Area = area,
-                    Perimeter = perimeter
-
+                    Area = Math.Round(area, 2),
+                    Perimeter = Math.Round(perimeter, 2)
                 });
 
                 dbContext.SaveChanges();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 {
-    internal class Parallellogram : Interfacial
+    public class Parallellogram : Interfacial
     {
         public ApplicationDbContext dbContext { get; set; }
         public Parallellogram(ApplicationDbContext db)
@@ -22,7 +22,7 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 
                 Console.Clear();
 
-                var dateNow = DateTime.Today;
+                var dateNow = DateTime.UtcNow;
                 double hight, length, width, area, perimeter;
 
                 Console.WriteLine("\tPARALLELLOGRAM");
@@ -41,16 +41,19 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 
                 perimeter = (2 * length) + (2 * hight);
                 Console.WriteLine($"\nPerimeter: {Math.Round(perimeter, 2)} cm");
-                Console.WriteLine($"(\n{dateNow}");
+                Console.WriteLine($"\n{dateNow}");
 
                 dbContext.Shapes.Add(new Shape
                 {
+                    input1 = length,
+                    input2 = width,
+                    input3 = hight,
                     Date = dateNow,
                     Type = shapeName,
-                    Area = area,
-                    Perimeter = perimeter
+                    Area = Math.Round(area, 2),
+                    Perimeter = Math.Round(perimeter, 2)
 
-                });
+                }) ;
 
                 dbContext.SaveChanges();
 

@@ -24,17 +24,23 @@ namespace Projekt1.DATA
             {
                 dbContext.Shapes.Add(new Shape
                 {
-                    Type = "rectangle"
-                    
+                    Type = "rectangle",
+                    Area = 10,
+                    Perimeter = 12,
+                    Date = DateTime.UtcNow
+
                 });
+                
             }
            
             if (!dbContext.Shapes.Any(s => s.ShapeID == 2))
             {
                 dbContext.Shapes.Add(new Shape
                 {
-                    Type = "parallellogram"
-                   
+                    Type = "parallellogram",
+                    Area = 4,
+                    Perimeter = 8,
+                   Date = DateTime.UtcNow
                 });
             }
 
@@ -42,7 +48,10 @@ namespace Projekt1.DATA
             {
                 dbContext.Shapes.Add(new Shape
                 {
-                    Type = "triangle"
+                    Type = "triangle",
+                    Area = 13,
+                    Perimeter = 5,
+                    Date = DateTime.UtcNow
                 });
             }
 
@@ -51,8 +60,11 @@ namespace Projekt1.DATA
                 dbContext.Shapes.Add(new Shape
                 {
                    
-                    Type = "diamond"
-               
+                    Type = "diamond",
+                    Area = 9,
+                    Perimeter = 18,
+                    Date = DateTime.UtcNow
+
                 });
             }
 
@@ -61,7 +73,12 @@ namespace Projekt1.DATA
                 dbContext.Shapes.Add(new Shape
                 {
                     
-                    Type = "circle"
+                    Type = "circle",
+                    Area = 22,
+                    Perimeter = 24,
+                    Date = DateTime.UtcNow
+                    
+                    
 
                 });
             }
@@ -69,58 +86,16 @@ namespace Projekt1.DATA
 
         public void CalculatorSeed(ApplicationDbContext dbContext)
         {
-            if (!dbContext.Calculators.Any(c => c.CalculatorID == 1))
-            {
-                dbContext.Calculators.Add(new Calculator
-                {
-                    CalculationMethod = "addition"
-
-                });
-            }
-            if (!dbContext.Calculators.Any(c => c.CalculatorID == 2))
-            {
-                dbContext.Calculators.Add(new Calculator
-                {
-                    CalculationMethod = "substraction"
-
-                });
-            }
-            if (!dbContext.Calculators.Any(c => c.CalculatorID == 3))
-            {
-                dbContext.Calculators.Add(new Calculator
-                {
-                    CalculationMethod = "multiplication"
-
-                });
-            }
-            if (!dbContext.Calculators.Any(c => c.CalculatorID == 4))
-            {
-                dbContext.Calculators.Add(new Calculator
-                {
-                    CalculationMethod = "division"
-
-                });
-            }
-            if (!dbContext.Calculators.Any(c => c.CalculatorID == 5))
-            {
-                dbContext.Calculators.Add(new Calculator
-                {
-                    CalculationMethod = "square root"
-
-                });
-            }
-            if (!dbContext.Calculators.Any(c => c.CalculatorID == 6))
-            {
-                dbContext.Calculators.Add(new Calculator
-                {
-                    CalculationMethod = "modulus"
-
-                });
-            }
+            
+            dbContext.Calculators.Any(c => c.CalculatorID == 1);
+            dbContext.Calculators.Any(c => c.CalculatorID == 2);
+            dbContext.Calculators.Any(c => c.CalculatorID == 3);
+            dbContext.Calculators.Any(c => c.CalculatorID == 4);
+            dbContext.Calculators.Any(c => c.CalculatorID == 5);
+            dbContext.Calculators.Any(c => c.CalculatorID == 6);
+            
 
         }
-
-
 
     }
 }

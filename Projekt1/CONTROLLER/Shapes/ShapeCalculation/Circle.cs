@@ -26,7 +26,7 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
                 Console.WriteLine("\tCIRCLE");
                 var shapeName = "circle";
 
-                var dateNow = DateTime.Today;
+                var dateNow = DateTime.UtcNow;
                 double radius, perimeterCircle, areaCircle;
                 double PI = Math.PI;
 
@@ -39,16 +39,17 @@ namespace Projekt1.CONTROLLER.Shapes.ShapeCalculation
 
                 areaCircle = PI * radius * radius;
                 Console.WriteLine($"\nArea: {Math.Round(areaCircle, 2)} cm");
-                Console.WriteLine($"(\n{dateNow}");
+                Console.WriteLine($"\n{dateNow}");
 
 
 
                 dbContext.Shapes.Add(new Shape
                 {
+                    input1 = radius,
                     Date = dateNow,
                     Type = shapeName,
-                    Area = areaCircle,
-                    Perimeter = perimeterCircle
+                    Area = Math.Round(areaCircle, 2),
+                    Perimeter = Math.Round(perimeterCircle, 2)
 
                 });
 

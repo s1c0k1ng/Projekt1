@@ -15,9 +15,18 @@ namespace Projekt1.DATA
         [Required]
         public string CalculationMethod { get; set; }
 
+        [Required]
+        public double FirstNumb { get; set; }
+       
+        [Required]
+        public double SecondNumb { get; set; }
+
+      
         public double Sum { get; set; }
 
         public double Sum2 { get; set; }
+
+
 
         public DateTime Date { get; set; }
 

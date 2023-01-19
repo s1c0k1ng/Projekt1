@@ -13,6 +13,8 @@ namespace Projekt1.DATA
 
         public DbSet<Calculator> Calculators { get; set; }
 
+        public DbSet<Game> Games { get; set; }
+
         public ApplicationDbContext()
         {
 

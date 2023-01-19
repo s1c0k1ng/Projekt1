@@ -1,9 +1,11 @@
-﻿using Projekt1.CONTROLLER.Calculator;
+﻿using Microsoft.EntityFrameworkCore;
+using Projekt1.CONTROLLER.Calculator;
 using Projekt1.CONTROLLER.Shapes;
 using Projekt1.DATA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,13 +24,14 @@ namespace Projekt1.CONTROLLER.Calculator
             var newBuilder = new Builder();
             var DbContext = newBuilder.Build();
 
-            try
-            {
-                while (true)
+            
+           while (true)
+           {
+                try
                 {
                     Console.Clear();
                     
-                    var dateNow = DateTime.Today;
+                    var dateNow = DateTime.UtcNow;
                     double number1, number2, sumOf, difOf, prodOf, quotOf, rootOf, rootOf2, remainOf;
                     
                     
@@ -49,6 +52,10 @@ namespace Projekt1.CONTROLLER.Calculator
                     Console.WriteLine("\n0. Exit");
 
                     var selectionOf = Convert.ToInt32(Console.ReadLine());
+                    if (selectionOf < 1 || selectionOf > 6)
+                    {
+                        break;
+                    }
 
                     switch (selectionOf)
                     {
@@ -56,7 +63,7 @@ namespace Projekt1.CONTROLLER.Calculator
                             Console.Clear();
 
                             Console.WriteLine("\tADDITION");
-                            var methodName = "addition";
+                            var methodName = "+";
 
                             sumOf = number1 + number2;
 
@@ -65,14 +72,14 @@ namespace Projekt1.CONTROLLER.Calculator
 
                             DbContext.Calculators.Add(new DATA.Calculator
                             {
-                                Date = dateNow,
                                 CalculationMethod = methodName,
-                                Sum = sumOf
-
+                                FirstNumb = number1,
+                                SecondNumb = number2,
+                                Sum = Math.Round(sumOf, 2),
+                                Date = dateNow,
                             });
-
+                           
                             DbContext.SaveChanges();
-
 
                             Console.ReadLine();
                             break; 
@@ -81,7 +88,7 @@ namespace Projekt1.CONTROLLER.Calculator
                             Console.Clear();
                             Console.WriteLine("\tSUBSTRACTION");
 
-                            var methodName2 = "substraction";
+                            var methodName2 = "-";
 
                             difOf = number1 - number2;
                             Console.WriteLine($"\nDiff of {number1} - {number2} is: {Math.Round(difOf, 2)}");
@@ -89,10 +96,11 @@ namespace Projekt1.CONTROLLER.Calculator
 
                             DbContext.Calculators.Add(new DATA.Calculator
                             {
-                                Date = dateNow,
                                 CalculationMethod = methodName2,
-                                Sum = difOf
-
+                                FirstNumb = number1,
+                                SecondNumb = number2,
+                                Sum = Math.Round(difOf, 2),
+                                Date = dateNow,
                             });
 
                             DbContext.SaveChanges();
@@ -104,7 +112,7 @@ namespace Projekt1.CONTROLLER.Calculator
                             Console.Clear();
                             Console.WriteLine("\tMULTIPLICATION");
 
-                            var methodName3 = "multiplication";
+                            var methodName3 = "*";
 
                             prodOf = number1 * number2;
                             Console.WriteLine($"\nProduct of {number1} * {number2} is: {Math.Round(prodOf, 2)}");
@@ -112,10 +120,11 @@ namespace Projekt1.CONTROLLER.Calculator
 
                             DbContext.Calculators.Add(new DATA.Calculator
                             {
-                                Date = dateNow,
                                 CalculationMethod = methodName3,
-                                Sum = prodOf
-
+                                FirstNumb = number1,
+                                SecondNumb = number2,
+                                Sum = Math.Round(prodOf, 2),
+                                Date = dateNow,
                             });
 
                             DbContext.SaveChanges();
@@ -127,7 +136,7 @@ namespace Projekt1.CONTROLLER.Calculator
                             Console.Clear();
                             Console.WriteLine("\tDIVISION");
 
-                            var methodName4 = "division";
+                            var methodName4 = "/";
 
                             quotOf = number1 / number2;
                             Console.WriteLine($"\nQuotient of {number1} / {number2} is: {Math.Round(quotOf, 2)}");
@@ -135,13 +144,15 @@ namespace Projekt1.CONTROLLER.Calculator
 
                             DbContext.Calculators.Add(new DATA.Calculator
                             {
-                                Date = dateNow,
                                 CalculationMethod = methodName4,
-                                Sum = quotOf
-
+                                FirstNumb = number1,
+                                SecondNumb = number2,
+                                Sum = Math.Round(quotOf, 2),
+                                Date = dateNow,
                             });
 
                             DbContext.SaveChanges();
+                           
 
                             Console.ReadLine();
                             break;
@@ -150,7 +161,7 @@ namespace Projekt1.CONTROLLER.Calculator
                             Console.Clear();
                             Console.WriteLine("\tSQUARE ROOT");
 
-                            var methodName5 = "square root";
+                            var methodName5 = "√";
 
                             rootOf = Math.Sqrt(number1);
                             rootOf2 = Math.Sqrt(number2);
@@ -160,11 +171,12 @@ namespace Projekt1.CONTROLLER.Calculator
 
                             DbContext.Calculators.Add(new DATA.Calculator
                             {
-                                Date = dateNow,
                                 CalculationMethod = methodName5,
-                                Sum = rootOf,
-                                Sum2= rootOf2
-                                
+                                FirstNumb = number1,
+                                SecondNumb = number2,
+                                Sum = Math.Round(rootOf, 2),
+                                Sum2= Math.Round(rootOf2, 2),
+                                Date = dateNow,
                             });
 
                             DbContext.SaveChanges();
@@ -176,7 +188,7 @@ namespace Projekt1.CONTROLLER.Calculator
                             Console.Clear();
                             Console.WriteLine("\tMODULUS");
 
-                            var methodName6 = "modulus";
+                            var methodName6 = "%";
 
                             remainOf = number1 % number2;
                             
@@ -185,10 +197,11 @@ namespace Projekt1.CONTROLLER.Calculator
 
                             DbContext.Calculators.Add(new DATA.Calculator
                             {
-                                Date = dateNow,
                                 CalculationMethod = methodName6,
-                                Sum = remainOf
-
+                                FirstNumb = number1,
+                                SecondNumb = number2,
+                                Sum = Math.Round(remainOf, 2),
+                                Date = dateNow,
                             });
 
                             DbContext.SaveChanges();
@@ -196,18 +209,18 @@ namespace Projekt1.CONTROLLER.Calculator
                             Console.ReadLine();
                             break;
 
-                        default: return;
-
                     }
                     
                 }
-                
+                catch (Exception)
+                {
+                    Console.WriteLine("\nINVALID INPUT");
+                    Console.ReadLine();
+                    continue;
+                }
+
             }
-            catch (Exception)
-            {
-                Console.WriteLine("\nINVALID INPUT GOING BACK TO MAIN MENU");
-                Console.ReadLine();
-            }
+           
             
         }
     }

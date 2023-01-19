@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Projekt1.CONTROLLER.Calculator
 {
-    internal class DeleteResult : Interfacial
+    public class DeleteResult : Interfacial
     {
         public ApplicationDbContext DbContext { get; set; }
 
@@ -22,10 +22,12 @@ namespace Projekt1.CONTROLLER.Calculator
 
             foreach (var result in DbContext.Calculators)
             {
-                Console.WriteLine($"ID: {result.CalculatorID}");
+                Console.WriteLine($"\nID: {result.CalculatorID}");
                 Console.WriteLine($"Method: {result.CalculationMethod}");
                 Console.WriteLine($"Result: {result.Sum}");
+                Console.WriteLine($"Result(Square root nr.2): {result.Sum2}");
             }
+           
             
             try
             {

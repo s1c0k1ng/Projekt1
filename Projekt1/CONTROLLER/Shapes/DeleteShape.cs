@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Projekt1.CONTROLLER.Shapes
 {
-    internal class DeleteShape : Interfacial
+    public class DeleteShape : Interfacial
     {
         public ApplicationDbContext DbContext { get; set; } 
 
@@ -24,10 +24,11 @@ namespace Projekt1.CONTROLLER.Shapes
             
             foreach (var shape in DbContext.Shapes)
             {
-              
-                Console.WriteLine($"\nID: {shape.Type}");
-                Console.WriteLine($"Shape: {shape.ShapeID}");
-
+               
+                Console.WriteLine($"\nID: {shape.ShapeID}");
+                Console.WriteLine($"Type {shape.Type}");
+                Console.WriteLine($"Area: {shape.Area}");
+                Console.WriteLine($"Perimeter: {shape.Perimeter}");
             }
 
             try
@@ -37,7 +38,6 @@ namespace Projekt1.CONTROLLER.Shapes
                 var shapeType = Convert.ToInt32(Console.ReadLine());
                 var shapeRemoval = DbContext.Shapes.First(s => s.ShapeID == shapeType);
                 DbContext.Shapes.Remove(shapeRemoval);
-
                 DbContext.SaveChanges();
 
                
@@ -48,6 +48,7 @@ namespace Projekt1.CONTROLLER.Shapes
             {
                 Console.WriteLine("\nINVALID INPUT");
                 Console.ReadLine();
+                
             }
 
         }
