@@ -26,8 +26,6 @@ namespace Projekt1.CONTROLLER.Calculator
            {
                 try
                 {
-
-
                     Console.Clear();
                    
                     Console.WriteLine("\tCALCULATOR MENU ");
