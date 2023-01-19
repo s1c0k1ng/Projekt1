@@ -24,6 +24,7 @@ namespace Projekt1.CONTROLLER.Calculator
 
             try
             {
+               
                 while (true)
                 {
                     Console.Clear();
